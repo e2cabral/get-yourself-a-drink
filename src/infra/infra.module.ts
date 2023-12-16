@@ -1,4 +1,8 @@
 import { Module } from '@nestjs/common';
+import {Database} from "./database/database";
 
-@Module({})
+@Module({
+  providers: [...Database.getProviders()],
+  exports: [...Database.getProviders()]
+})
 export class InfraModule {}
