@@ -11,7 +11,7 @@ export class DrinksController {
     try {
       return this.service.getDrinks(query)
     } catch (err) {
-
+      throw err
     }
   }
 }

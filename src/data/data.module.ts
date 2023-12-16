@@ -1,4 +1,8 @@
 import { Module } from '@nestjs/common';
+import {DrinksRepository} from "./repositories/drinks.repository";
 
-@Module({})
+@Module({
+  providers: [DrinksRepository],
+  exports: [DrinksRepository]
+})
 export class DataModule {}

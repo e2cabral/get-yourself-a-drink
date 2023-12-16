@@ -3,11 +3,13 @@ import { HealthcheckController } from './controllers/common/healthcheck.controll
 import {TerminusModule} from "@nestjs/terminus";
 import {HttpModule} from "@nestjs/axios";
 import { DrinksController } from './controllers/drinks/drinks.controller';
+import {DomainModule} from "../domain/domain.module";
 
 @Module({
   imports: [
     TerminusModule,
-    HttpModule
+    HttpModule,
+    DomainModule
   ],
   controllers: [HealthcheckController, DrinksController]
 })
