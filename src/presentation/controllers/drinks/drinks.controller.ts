@@ -1,4 +1,4 @@
-import {Controller, Get, Query} from '@nestjs/common';
+import {Controller, Get, Param, Query} from '@nestjs/common';
 import {GetDrinksQueryRequest} from "../../../main/queries/get-drinks/get-drinks.query.request";
 import {DrinksService} from "../../../domain/services/drinks/drinks.service";
 import {ApiQuery, ApiResponse, ApiTags} from "@nestjs/swagger";
@@ -12,12 +12,20 @@ export class DrinksController {
   @ApiTags('Drinks')
   @ApiResponse({
     status: 200,
-    description: 'The random recipe has been successfully retrieved.',
     type: [Drink],
   })
   async getDrinks(@Query() query: GetDrinksQueryRequest) {
     try {
       return this.service.getDrinks(query)
+    } catch (err) {
+      throw err
+    }
+  }
+
+  @Get('/:id')
+  async getById(@Param('id') id: number) {
+    try {
+      return this.service.getDrinkById(id)
     } catch (err) {
       throw err
     }
