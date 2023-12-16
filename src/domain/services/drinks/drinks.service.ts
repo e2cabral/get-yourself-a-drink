@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import {GetDrinksQueryRequest} from "../../../main/queries/get-drinks/get-drinks.query.request";
 import {QueryBus} from "@nestjs/cqrs";
+import {GetDrinkByIdQueryRequest} from "../../../main/queries/get-drink-by-id/get-drink-by-id.query.request";
 
 @Injectable()
 export class DrinksService {
@@ -22,6 +23,16 @@ export class DrinksService {
           number ?? 10,
           offset
         )
+      )
+    } catch (err) {
+      throw err
+    }
+  }
+
+  async getDrinkById(id: number) {
+    try {
+      return this.queryBus.execute(
+        new GetDrinkByIdQueryRequest(id)
       )
     } catch (err) {
       throw err
