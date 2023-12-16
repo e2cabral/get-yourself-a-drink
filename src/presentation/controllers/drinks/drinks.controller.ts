@@ -1,6 +1,6 @@
 import {Controller, Get, Query} from '@nestjs/common';
-import {GetDrinksQueryRequest} from "../../../../main/queries/get-drinks/get-drinks.query.request";
-import {DrinksService} from "../../../../domain/services/drinks/drinks.service";
+import {GetDrinksQueryRequest} from "../../../main/queries/get-drinks/get-drinks.query.request";
+import {DrinksService} from "../../../domain/services/drinks/drinks.service";
 
 @Controller('drinks')
 export class DrinksController {
