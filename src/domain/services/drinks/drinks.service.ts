@@ -15,8 +15,12 @@ export class DrinksService {
 
       return this.queryBus.execute(
         new GetDrinksQueryRequest(
-          name, category, preparation,
-          sort, number, offset
+          name,
+          category,
+          preparation,
+          sort ?? 'asc',
+          number ?? 10,
+          offset
         )
       )
     } catch (err) {
