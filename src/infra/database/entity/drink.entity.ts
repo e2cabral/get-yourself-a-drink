@@ -1,7 +1,7 @@
 import {Ingredients} from "../../../domain/models/ingredients.model";
 import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 
-@Entity('drinks')
+@Entity({ name: 'drinks', schema: 'drinks' })
 export class DrinkEntity {
   @PrimaryGeneratedColumn()
   public id: number;
