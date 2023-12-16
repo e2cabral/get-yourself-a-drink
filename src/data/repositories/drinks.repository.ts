@@ -11,14 +11,17 @@ export class DrinksRepository {
   async getDrinks(query: GetDrinksQueryRequest): Promise<Array<Drink>> {
     try {
       const { name, category, preparation } = query
+
+      const where = {name: null,preparation: null,category: null}
+
+      if (name) where.name = Like(`%${name}%`)
+      if (preparation) where.preparation = Like(`%${preparation}%`)
+      if (category) where.category = category
+
       return this
         .repository
         .find({
-          where: {
-            name: Like(`%${name}%`),
-            preparation: Like(`%${preparation}%`),
-            category,
-          },
+          where,
           skip: (query.offset - 1) * query.number,
           take: query.number,
           order: { name: query.sort }
