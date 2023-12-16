@@ -1,4 +1,5 @@
 import {DataSource} from "typeorm";
+import {DrinksRepositoryProvider} from "./providers/drinks.repository.provider";
 
 export class Database {
   private static PostgresDataSource = {
@@ -19,7 +20,9 @@ export class Database {
     }
   }
 
+  private static DrinksRepositoryProvider = DrinksRepositoryProvider()
+
   public static getProviders() {
-    return [this.PostgresDataSource]
+    return [this.PostgresDataSource, this.DrinksRepositoryProvider]
   }
 }
