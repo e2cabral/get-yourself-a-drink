@@ -34,6 +34,10 @@ export class DrinksController {
 
   @Get('/:id')
   @ApiTags('Drinks')
+  @ApiResponse({
+    status: 200,
+    type: Drink,
+  })
   async getById(@Param('id') id: number) {
     try {
       const data = await this.service.getDrinkById(id)
