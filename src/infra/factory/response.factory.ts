@@ -1,14 +1,14 @@
 import {BaseHttpError} from "../http/errors";
 
 export class ResponseFactory {
-  static async onSuccess(data: unknown): Promise<Response> {
+  static async onSuccess<T>(data: T): Promise<Response<T>> {
     return {
       body: data,
       status: 200
     }
   }
 
-  static async onError(err: BaseHttpError): Promise<Response> {
+  static async onError(err: BaseHttpError): Promise<Response<Message>> {
     const { status, message } = err
     return {
       body: { message },
@@ -17,7 +17,9 @@ export class ResponseFactory {
   }
 }
 
-type Response = {
-  body: unknown
+type Response<T extends unknown> = {
+  body: T
   status: number
 }
+
+type Message = { message: string }
