@@ -1,5 +1,7 @@
 import {Ingredients} from "../../../domain/models/ingredients.model";
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinTable, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {FavoriteEntity} from "./favorite.entity";
+import {UserEntity} from "./user.entity";
 
 @Entity({ name: 'drinks', schema: 'drinks' })
 export class DrinkEntity {
@@ -20,4 +22,7 @@ export class DrinkEntity {
 
   @Column({ type: 'json' })
   public ingredients: Array<Ingredients>;
+
+  @OneToMany(() => FavoriteEntity, (favorite) => favorite.users)
+  users: Array<UserEntity>
 }

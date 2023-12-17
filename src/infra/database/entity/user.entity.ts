@@ -1,15 +1,15 @@
-import {Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {DrinkEntity} from "./drink.entity";
+import {FavoriteEntity} from "./favorite.entity";
 
 @Entity({ name: 'users', schema: 'users' })
 export class UserEntity {
   @PrimaryGeneratedColumn()
-  public id: number;
+  id: number;
 
   @Column({ type: 'varchar', length: 255 })
   name: string
 
-  @ManyToMany(() => DrinkEntity)
-  @JoinTable()
+  @OneToMany(() => FavoriteEntity, (favorite) => favorite.drinks)
   drinks: Array<DrinkEntity>
 }
