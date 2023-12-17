@@ -12,5 +12,5 @@ export class User {
   }
   id: number
   name: string
-  drinks: Array<Drink>
+  drinks?: Array<Drink>
 }
