@@ -4,6 +4,7 @@ import {TerminusModule} from "@nestjs/terminus";
 import {HttpModule} from "@nestjs/axios";
 import { DrinksController } from './controllers/drinks/drinks.controller';
 import {DomainModule} from "../domain/domain.module";
+import { FavoritesController } from './controllers/favorites/favorites.controller';
 
 @Module({
   imports: [
@@ -11,6 +12,6 @@ import {DomainModule} from "../domain/domain.module";
     HttpModule,
     DomainModule
   ],
-  controllers: [HealthcheckController, DrinksController]
+  controllers: [HealthcheckController, DrinksController, FavoritesController]
 })
 export class PresentationModule {}
