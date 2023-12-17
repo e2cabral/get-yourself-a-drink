@@ -18,8 +18,11 @@ export class DrinksController {
   })
   async getDrinks(@Query() query: GetDrinksQueryRequest) {
     try {
-      const data = this.service.getDrinks(query)
-      return ResponseFactory.onSuccess(data)
+      const data = await this
+        .service
+        .getDrinks(query)
+
+      return ResponseFactory.onSuccess<Array<Drink>>(data)
     } catch (err) {
       return ResponseFactory.onError(
         new InternalServerError(
@@ -33,8 +36,8 @@ export class DrinksController {
   @ApiTags('Drinks')
   async getById(@Param('id') id: number) {
     try {
-      const data = this.service.getDrinkById(id)
-      return ResponseFactory.onSuccess(data)
+      const data = await this.service.getDrinkById(id)
+      return ResponseFactory.onSuccess<Drink>(data)
     } catch (err) {
       return ResponseFactory.onError(
         new InternalServerError(

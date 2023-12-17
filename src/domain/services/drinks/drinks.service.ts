@@ -2,12 +2,13 @@ import { Injectable } from '@nestjs/common';
 import {GetDrinksQueryRequest} from "../../../main/queries/get-drinks/get-drinks.query.request";
 import {QueryBus} from "@nestjs/cqrs";
 import {GetDrinkByIdQueryRequest} from "../../../main/queries/get-drink-by-id/get-drink-by-id.query.request";
+import {Drink} from "../../models/drink.model";
 
 @Injectable()
 export class DrinksService {
   constructor(private queryBus: QueryBus) {
   }
-  async getDrinks(query: GetDrinksQueryRequest) {
+  async getDrinks(query: GetDrinksQueryRequest): Promise<Array<Drink>> {
     try {
       const {
         name, category, preparation,
@@ -29,7 +30,7 @@ export class DrinksService {
     }
   }
 
-  async getDrinkById(id: number) {
+  async getDrinkById(id: number): Promise<Drink> {
     try {
       return this.queryBus.execute(
         new GetDrinkByIdQueryRequest(id)
