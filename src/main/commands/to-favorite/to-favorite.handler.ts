@@ -4,7 +4,7 @@ import {FavoritesRepository} from "../../../data/repositories/favorites.reposito
 import {ToFavoriteCommandRequest} from "./to-favorite.command.request";
 import {ToFavoriteCommandResponse} from "./to-favorite.command.response";
 
-@CommandHandler(GetDrinkByIdQueryRequest)
+@CommandHandler(ToFavoriteCommandRequest)
 export class ToFavoriteHandler implements ICommandHandler<ToFavoriteCommandRequest> {
   constructor(private repository: FavoritesRepository) {
   }
