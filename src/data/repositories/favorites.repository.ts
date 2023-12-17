@@ -2,29 +2,20 @@ import {Inject, Injectable} from "@nestjs/common";
 import {Repository} from "typeorm";
 import {DrinkEntity} from "../../infra/database/entity/drink.entity";
 import {UserEntity} from "../../infra/database/entity/user.entity";
+import {FavoriteEntity} from "../../infra/database/entity/favorite.entity";
 
 @Injectable()
 export class FavoritesRepository {
   constructor(
-    @Inject('DRINKS_REPOSITORY') private drinks: Repository<DrinkEntity>,
-    @Inject('USERS_REPOSITORY') private users: Repository<UserEntity>
+    @Inject('FAVORITE_REPOSITORY') private favorite: Repository<FavoriteEntity>
   ) {}
 
   async toFavorite(userId: number, drinkId: number) {
-    const drink = await this
-      .drinks
-      .findOne({
-        where: { id: drinkId }
-      })
-
-    const user = await this
-      .users
-      .findOne({
-        where: { id: userId }
-      })
-
-    user.drinks.push(drink)
-
-    return this.users.save(user)
+    try {
+      const data = await this.favorite.save({ userId, drinkId })
+      return data
+    } catch (err) {
+      throw err
+    }
   }
 }
