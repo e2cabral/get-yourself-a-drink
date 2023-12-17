@@ -1,8 +1,9 @@
 import {User} from "../../../domain/models/user.model";
+import {Favorite} from "../../../domain/models/favorite.model";
 
-export type ToFavoriteCommandResponse = User
-export const ToFavoriteCommandResponse = (user: User) => {
-  const {id, name, drinks} = user
+export type ToFavoriteCommandResponse = Favorite
+export const ToFavoriteCommandResponse = (user: Favorite) => {
+  const {drinks, users, userId, drinkId} = user
 
-  return new User(id, name, drinks)
+  return new Favorite(userId, drinkId, users, drinks)
 }
