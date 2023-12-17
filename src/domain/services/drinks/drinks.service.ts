@@ -22,7 +22,7 @@ export class DrinksService {
           preparation,
           sort ?? 'asc',
           number ?? 10,
-          offset
+          offset ?? 1
         )
       )
     } catch (err) {
