@@ -1,4 +1,3 @@
-import {Ingredients} from "../../../domain/models/ingredients.model";
 import {Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn} from "typeorm";
 import {DrinkEntity} from "./drink.entity";
 
