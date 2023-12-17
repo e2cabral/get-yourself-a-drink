@@ -1,7 +1,7 @@
 import {Controller, Get, Param, Query} from '@nestjs/common';
 import {GetDrinksQueryRequest} from "../../../main/queries/get-drinks/get-drinks.query.request";
 import {DrinksService} from "../../../domain/services/drinks/drinks.service";
-import {ApiQuery, ApiResponse, ApiTags} from "@nestjs/swagger";
+import {ApiResponse, ApiTags} from "@nestjs/swagger";
 import {Drink} from "../../../domain/models/drink.model";
 import {ResponseFactory} from "../../../infra/factory/response.factory";
 import {InternalServerError} from "../../../infra/http/errors";
