@@ -8,11 +8,11 @@ export class ResponseFactory {
     }
   }
 
-  static async onError<T extends Newable<T>>(err: T): Promise<Response> {
-    const { status, message } = new err()
+  static async onError(err: BaseHttpError): Promise<Response> {
+    const { status, message } = err
     return {
       body: { message },
-      status: status
+      status
     }
   }
 }
@@ -20,10 +20,4 @@ export class ResponseFactory {
 type Response = {
   body: unknown
   status: number
-}
-
-
-
-interface Newable<T> {
-  new(): BaseHttpError
 }
