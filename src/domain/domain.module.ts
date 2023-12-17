@@ -6,6 +6,6 @@ import { FavoritesService } from './services/favorites/favorites.service';
 @Module({
   imports: [CqrsModule],
   providers: [DrinksService, FavoritesService],
-  exports: [DrinksService]
+  exports: [DrinksService, FavoritesService]
 })
 export class DomainModule {}
