@@ -1,11 +1,10 @@
-import {ICommandHandler, IQueryHandler, QueryHandler} from "@nestjs/cqrs";
+import {CommandHandler, ICommandHandler} from "@nestjs/cqrs";
 import {GetDrinkByIdQueryRequest} from "../../queries/get-drink-by-id/get-drink-by-id.query.request";
-import {GetDrinkByIdQueryResponse} from "../../queries/get-drink-by-id/get-drink-by-id.query.response";
 import {FavoritesRepository} from "../../../data/repositories/favorites.repository";
 import {ToFavoriteCommandRequest} from "./to-favorite.command.request";
 import {ToFavoriteCommandResponse} from "./to-favorite.command.response";
 
-@QueryHandler(GetDrinkByIdQueryRequest)
+@CommandHandler(GetDrinkByIdQueryRequest)
 export class ToFavoriteHandler implements ICommandHandler<ToFavoriteCommandRequest> {
   constructor(private repository: FavoritesRepository) {
   }
