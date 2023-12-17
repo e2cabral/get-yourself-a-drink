@@ -1,4 +1,3 @@
-import {Drink} from "../../../domain/models/drink.model";
 import {User} from "../../../domain/models/user.model";
 
 export type ToFavoriteCommandResponse = User
