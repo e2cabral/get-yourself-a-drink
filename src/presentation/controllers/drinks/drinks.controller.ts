@@ -3,6 +3,8 @@ import {GetDrinksQueryRequest} from "../../../main/queries/get-drinks/get-drinks
 import {DrinksService} from "../../../domain/services/drinks/drinks.service";
 import {ApiQuery, ApiResponse, ApiTags} from "@nestjs/swagger";
 import {Drink} from "../../../domain/models/drink.model";
+import {ResponseFactory} from "../../../infra/factory/response.factory";
+import {InternalServerError} from "../../../infra/http/errors";
 
 @Controller('drinks')
 export class DrinksController {
@@ -16,18 +18,29 @@ export class DrinksController {
   })
   async getDrinks(@Query() query: GetDrinksQueryRequest) {
     try {
-      return this.service.getDrinks(query)
+      const data = this.service.getDrinks(query)
+      return ResponseFactory.onSuccess(data)
     } catch (err) {
-      throw err
+      return ResponseFactory.onError(
+        new InternalServerError(
+          (err as Error).message
+        )
+      )
     }
   }
 
   @Get('/:id')
+  @ApiTags('Drinks')
   async getById(@Param('id') id: number) {
     try {
-      return this.service.getDrinkById(id)
+      const data = this.service.getDrinkById(id)
+      return ResponseFactory.onSuccess(data)
     } catch (err) {
-      throw err
+      return ResponseFactory.onError(
+        new InternalServerError(
+          (err as Error).message
+        )
+      )
     }
   }
 }
