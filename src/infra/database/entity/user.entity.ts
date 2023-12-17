@@ -1,4 +1,4 @@
-import {Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {DrinkEntity} from "./drink.entity";
 import {FavoriteEntity} from "./favorite.entity";
 

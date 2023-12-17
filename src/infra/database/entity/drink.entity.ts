@@ -1,5 +1,5 @@
 import {Ingredients} from "../../../domain/models/ingredients.model";
-import {Column, Entity, JoinTable, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {FavoriteEntity} from "./favorite.entity";
 import {UserEntity} from "./user.entity";
 

@@ -3,7 +3,6 @@ import {FavoritesService} from "../../../domain/services/favorites/favorites.ser
 import {ResponseFactory} from "../../../infra/factory/response.factory";
 import {InternalServerError} from "../../../infra/http/errors";
 import {ApiResponse, ApiTags} from "@nestjs/swagger";
-import {Drink} from "../../../domain/models/drink.model";
 import {Favorite} from "../../../domain/models/favorite.model";
 
 @Controller('favorite')

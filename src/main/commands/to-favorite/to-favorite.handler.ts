@@ -1,5 +1,4 @@
 import {CommandHandler, ICommandHandler} from "@nestjs/cqrs";
-import {GetDrinkByIdQueryRequest} from "../../queries/get-drink-by-id/get-drink-by-id.query.request";
 import {FavoritesRepository} from "../../../data/repositories/favorites.repository";
 import {ToFavoriteCommandRequest} from "./to-favorite.command.request";
 import {ToFavoriteCommandResponse} from "./to-favorite.command.response";
