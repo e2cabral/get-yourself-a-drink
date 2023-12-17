@@ -1,5 +1,9 @@
 import {DataSource} from "typeorm";
-import {DrinksRepositoryProvider, UserRepositoryProvider} from "./providers/drinks.repository.provider";
+import {
+  DrinksRepositoryProvider,
+  FavoriteRepositoryProvider,
+  UserRepositoryProvider
+} from "./providers/drinks.repository.provider";
 
 export class Database {
   private static PostgresDataSource = {
@@ -15,19 +19,21 @@ export class Database {
         entities: [
           __dirname + '/../**/*.entity{.ts,.js}',
         ],
-        synchronize: true,
+        synchronize: false,
       }).initialize()
     }
   }
 
   private static DrinksRepositoryProvider = DrinksRepositoryProvider()
   private static UserRepositoryProvider = UserRepositoryProvider()
+  private static FavoriteRepositoryProvider = FavoriteRepositoryProvider()
 
   public static getProviders() {
     return [
       this.PostgresDataSource,
       this.DrinksRepositoryProvider,
-      this.UserRepositoryProvider
+      this.UserRepositoryProvider,
+      this.FavoriteRepositoryProvider
     ]
   }
 }
